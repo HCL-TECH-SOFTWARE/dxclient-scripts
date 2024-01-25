@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="update">
+
+    <!-- Sample for deleting the page with unique name 'wps.content.root.WelcomePage'.
+    
+         NOTE: This sample expects that a page with the unique name 'wps.content.root.WelcomePage' exists.
+               For example the DeployPortlet.xml sample creates such a page.
+     -->
+    <portal action="locate">
+
+        <content-node action="delete" uniquename="wps.content.root.WelcomePage">
+        </content-node>
+
+    </portal>
+</request>

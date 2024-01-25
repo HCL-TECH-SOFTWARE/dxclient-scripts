@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="update">
+
+    <!-- Sample for undeploying a web module with name 'com.ibm.wps.portlets.welcome'
+    NOTE: This sample expects that a portlet with the unique name 'com.ibm.wps.portlets.welcome' exists.
+               For example the DeployPortlet.xml sample deploys such a portlet.
+    -->
+    <portal action="locate">
+
+        <!-- uid must match uid attribute of portlet-app in portlet.xml -->
+       <web-app action="delete" uid="com.ibm.wps.portlets.welcome">
+       </web-app>
+
+    </portal>
+</request>

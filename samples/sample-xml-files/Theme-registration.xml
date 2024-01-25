@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="update">
+    <portal action="locate">
+        <!-- Sample for deploying themes in an XML script.
+                Sample for registering both EAR & WebDAV themes.
+                Note that this only created the database entries;
+                you still need to provide the rendering JSPs by
+                deploying the corresponding web module under the
+                specified context root in the application server. -->
+        <!--Unique name must match the theme name-->
+        <!--context root must match the theme context root-->
+    	<theme action="update" active="true" context-root="wps/MyCustomTheme" default="false" defaultskinref="ZK_00000000000000A0BR2B300670" domain="rel" resourceroot="dynamicSpots" uniquename="MyCustomTheme">
+			<localedata locale="en">
+                <title>MyCustomTheme</title>
+            </localedata>
+            <allowed-skin skin="ZK_00000000000000A0BR2B300670" update="set"/>
+			<allowed-skin skin="ZK_00000000000000A0BR2B300672" update="set"/>
+			<allowed-skin skin="ZK_00000000000000A0BR2B300674" update="set"/>
+			<allowed-skin skin="ZK_00000000000000A0BR2B300676" update="set"/>
+            <!--Must provide proper references in parameters-->
+            <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[MyCustomTheme]]></parameter>
+            <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_deferred.json]]></parameter>
+            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/layout-templates/2ColumnEqual/]]></parameter>
+        </theme>
+        <theme action="update" active="true" context-root="/wps/simpleTheme" default="false" defaultskinref="ZK_00000000000000A0BR2B300670" domain="rel" resourceroot="dynamicSpots" uniquename="custom.portal.theme.simple-demo">
+            <localedata locale="en">
+            <!--Title must match the theme name-->
+            <title>simple-demo</title>
+            </localedata>
+            <!-- There's only one skin that may be combined with this theme, provide proper reference. -->
+            <allowed-skin skin="ZK_00000000000000A0BR2B300670" update="set"/>
+            <parameter name="com.ibm.portal.theme.aggregationmodes" type="string" update="set"><![CDATA[ssa]]></parameter>
+            <parameter name="resourceaggregation.autoLoadPortletCapabilities" type="string" update="set"><![CDATA[true]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[dav:fs-type1/themes/simple-demo/layout-templates/1Column/]]></parameter>
+            <parameter name="simpletheme.css.class.prefix" type="string" update="set"><![CDATA[st]]></parameter>
+            <parameter name="simpletheme.wcm.path" type="string" update="set"><![CDATA[Web Content/Articles/Sample Article]]></parameter>
+            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[dav:fs-type1/themes/simple-demo/]]></parameter>
+            <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_deferred.json]]></parameter>
+        </theme>
+     </portal>
+</request>
