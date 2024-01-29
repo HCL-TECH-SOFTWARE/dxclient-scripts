@@ -12,8 +12,6 @@ DXClient can take artifacts developed locally and deploy them to HCL DX servers 
 
 DXClient is meant to be the one-stop, platform-independent solution that lets you integrate HCL DX with any automation infrastructure of your choice.
 
-> **Note:** You are encouraged to use the DXClient Docker image package from CF196 onwards for easier installation.
-
 ## Requirements
 
 To use these tools you will need:
