@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="update"
+    create-oids="true">
+
+
+    <portal action="locate">
+
+        <!-- Sample JSR 286 portlet to create or update a portlet-->
+        <!-- The uid must match uid attribute of portlet-app in portlet.xml inside the war file appended with "webmod" -->
+        <web-app action="update" active="true" domain="rel" uid="com.ibm.wps.portlets.welcome.webmod">
+         <!-- Below url path will be replaced with the generated URL by DXClient after uploading the war file to remote server -->
+           <url>file:///localhost/base/wp.cp.portlet.welcome/installableApps/wp.portlet.welcome.war</url>
+	   <!--url>file://localhost/$user_install_root$/PortalServer/deployed/archive/com.ibm.wps.cp.portlet.welcome.webmod/wp.portlet.welcome.war</url-->
+       <!-- Replace the context root and display value below with your web application context root -->
+            <context-root>/wps/PA_Welcome</context-root>
+            <display-name>PA_Welcome</display-name>
+            <!-- The uid must match uid attribute of concrete-portlet-app in portlet.xml. -->
+           <portlet-app action="update" active="true" uid="com.ibm.wps.portlets.welcome.1">
+              <access-control externalized="false" owner="uid=wpsadmin,o=defaultWIMFileBasedRealm" private="false"/>
+              <!-- The name attribute must match content of portlet-name subtag  of concrete-portlet in portlet.xml. -->
+	            <portlet action="update" active="true" objectid="WelcomePortlet" name="Welcome Portlet" /> 
+            </portlet-app>
+        </web-app>
+
+
+        <!-- Parent element under which the new page is inserted -->
+        <content-node action="locate" objectid="parentPage" uniquename="wps.content.root"/>
+
+         <content-node action="update" active="true" allportletsallowed="true" content-parentref="parentPage" create-type="explicit" domain="rel" ordinal="1500" type="staticpage" uniquename="wps.content.root.WelcomePage">
+            <localedata locale="en"><title>Welcome Page</title></localedata>
+            <!-- The content of static page in binary format 
+                 attribute markup can be set to one of portal server supported markups
+                 attribute display-option can be set to "inline" or "iframe" or "ajax".-->
+            <pagecontents markup="html" display-option="inline">
+                <content>UEsDBBQACAAIALKbTDcAAAAAAAAAAAAAAAALAAAAaW5kZXgxLmh0bWxtUE1rwzAMvQf6H0TuTeh1
+ZL7stFsghZ5VW2sEjmxir1n//YTdbDAGOoj3IelpmAmdOTRD5uzJTLhETzBlzGxhxBsNfWVU0u/a
+a3APc9AmmvPMCbQQUvVE9QB9lTkdFLpAMyYIQhDDquPyu6heLMGFvA0LwVjxDurcHX7Khz6WhY7v
+YD2m9No+maMNkpGF1hYEF/oh3nb81Jr/nRuLC9sf26WAp1bzPPwvfHT0wcKZg7xsMXWx2y88B81w
+neJMa02BvizsdWO5uTZNiTV6wkRw58QZPvVtNz2xhFNdfWvzDVBLBwjDeEQR4AAAAJMBAABQSwEC
+FAAUAAgACACym0w3w3hEEeAAAACTAQAACwAAAAAAAAAAAAAAAAAAAAAAaW5kZXgxLmh0bWxQSwUG
+AAAAAAEAAQA5AAAAGQEAAAAA</content>
+            </pagecontents>
+            <parameter name="com.ibm.portal.bookmarkable" type="string" update="set"><![CDATA[Yes]]></parameter>
+            <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[staticpage3]]></parameter>
+	    <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_dojo_lightweight.json]]></parameter>
+            <!-- this parameter must match the name of static page -->
+            <parameter name="com.ibm.portal.static.page.file.name.html" type="string" update="set"><![CDATA[index1.html]]></parameter>
+            <access-control externalized="false" owner="uid=wpsadmin,o=defaultwimfilebasedrealm" private="false"/>
+            <component action="update" active="true" domain="rel" ordinal="100" orientation="V" type="container">
+                <component action="update" active="true" domain="rel" ordinal="100" orientation="V" type="container"/>
+                <component action="update" active="true" domain="rel" ordinal="100" orientation="H" type="container">
+                    <!-- this parameter must match the portlet-container name in the static page -->
+                    <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[portletContainer1]]></parameter>
+                    <component action="update" active="true" domain="rel" ordinal="100" type="control">
+                        <!-- this parameter must match the portlet-window name in the static page -->
+                        <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[portletWindow1]]></parameter>
+                        <portletinstance action="update" domain="rel" portletref="WelcomePortlet" />
+                    </component>
+                </component>
+            </component>
+        </content-node>
+
+    </portal>
+</request>

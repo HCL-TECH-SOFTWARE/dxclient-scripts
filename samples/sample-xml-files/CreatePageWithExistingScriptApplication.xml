@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ /*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+<request build="20210225-035822" type="update" version="8.5.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PortalConfig_8.5.0.xsd" create-oids="true">
+ <!-- Sample for creating a page that contains an existing script application.  -->
+    <portal action="locate">
+        <web-app action="locate" domain="rel" objectid="Z1_00000000000000A0BR2B300EO7" uid="ilwwcm-localrenderingportlet-jsr.war.webmod">
+            <servlet action="locate" domain="rel" name="Web Content Viewer (JSR 286)" objectid="ZV_00000000000000A0BR2B300EO3"/>
+            <portlet-app action="locate" domain="rel" name="ilwwcm-localrenderingportlet-jsr.war" objectid="Z2_00000000000000A0BR2B300E40" uid="ilwwcm-localrenderingportlet-jsr.war">
+                <portlet action="locate" domain="rel" name="Web Content Viewer (JSR 286)" objectid="Z3_00000000000000A0BR2B300E87" uniquename="ibm.portal.Web.Content.Viewer.Jsr286"/>
+            </portlet-app>
+        </web-app>
+        <content-node action="locate" domain="rel" objectid="Z6_000000000000000000000000A0" uniquename="wps.content.root"/>
+        <content-node action="update" active="true" allportletsallowed="true" content-parentref="Z6_000000000000000000000000A0" create-type="explicit" domain="rel" objectid="Z6_P2AIGB80115TB0Q382EM9420G1" ordinal="853968" themeref="undefined" type="staticpage">
+            <localedata locale="en">
+                <!--Change title to add new page-->
+                <title>my script application</title>
+            </localedata>
+            <pagecontents display-option="inline" markup="html">
+                <content>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</content>
+            </pagecontents>
+            <parameter name="com.ibm.portal.IgnoreAccessControlInCaches" type="string" update="set"><![CDATA[false]]></parameter>
+            <parameter name="com.ibm.portal.bookmarkable" type="string" update="set"><![CDATA[Yes]]></parameter>
+            <parameter name="com.ibm.portal.feed.remote-cache-expiry" type="string" update="set"><![CDATA[86400]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.expiration" type="string" update="set"><![CDATA[1615390613736]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.file.name.html" type="string" update="set"><![CDATA[layout.html]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.lastmodified" type="string" update="set"><![CDATA[1615372458186]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.markup" type="string" update="set"><![CDATA[html]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.ref" type="string" update="set"><![CDATA[dav:fs-type1/themes/Portal8.5/layout-templates/2ColumnEqual/]]></parameter>
+            <parameter name="com.ibm.portal.remote-cache-expiry" type="string" update="set"><![CDATA[86400]]></parameter>
+            <parameter name="com.ibm.portal.remote-cache-scope" type="string" update="set"><![CDATA[NON-SHARED]]></parameter>
+            <parameter name="com.ibm.portal.static.page.file.name.html" type="string" update="set"><![CDATA[layout.html]]></parameter>
+            <parameter name="param.sharing.scope.{http://ibm.connections.com/portlet}" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <parameter name="param.sharing.scope.{http://www.ibm.com/xmlns/prod/datatype/content/resource-collections}" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <parameter name="param.sharing.scope.{http://www.ibm.com/xmlns/prod/datatype/content}" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <parameter name="param.sharing.scope.{http://www.ibm.com/xmlns/prod/websphere/portal/publicparams}path-info" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <parameter name="param.sharing.scope.{http://www.ibm.com/xmlns/prod/websphere/portal/v7.0/portal-contextual-portal}" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <parameter name="param.sharing.scope.{http://www.ibm.com/xmlns/prod/websphere/portal/v8.0/portal-contextual-portal}" type="string" update="set"><![CDATA[ibm.portal.sharing.scope.page]]></parameter>
+            <access-control externalized="false" owner="uid=wpsadmin,o=defaultWIMFileBasedRealm" private="false"/>
+            <content-mapping-info>
+                <content-mapping content-id="gxsywmg-bcdflvpwgyaikhgwimzkmjqnjfrh" default="false" system="true"/>
+            </content-mapping-info>
+            <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_N35JQ2246V79C3GC7V9NNGAK26" ordinal="65536" orientation="V" skinref="undefined" type="container" width="undefined">
+                <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_4PJ6JDFU4M0K8G8BFO0TG9V132" ordinal="65536" orientation="V" skinref="undefined" type="container" width="undefined"/>
+                <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_AEITDH54VHR1RVE7I0RTBD7E82" ordinal="131072" orientation="H" skinref="undefined" type="container" width="undefined">
+                    <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[ibmHiddenWidgets]]></parameter>
+                    <parameter name="css-classes" type="string" update="set"><![CDATA[ibmDndRow wpthemeRow hiddenWidgetsContainer wpthemeCol12of12 wpthemeFull]]></parameter>
+                </component>
+                <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_P9CKA5QGSBVCKP3N29ATQ6P4F4" ordinal="196608" orientation="H" skinref="undefined" type="container" width="undefined">
+                    <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[ibmMainContainer]]></parameter>
+                    <parameter name="css-classes" type="string" update="set"><![CDATA[wpthemeLeft wpthemeCol6of12 wpthemeMedium wpthemePrimaryContainer wpthemeCol ibmDndColumn]]></parameter>
+                    <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_P2AIGB80115TB0Q382EM942080" ordinal="65536" skinref="undefined" type="control" width="undefined">
+                        <portletinstance action="update" domain="rel" objectid="Z5_P2AIGB80115TB0Q382EM942084" portletref="Z3_00000000000000A0BR2B300E87">
+                            <preferences name="INCLUDE_IN_SEARCH_INDEX" update="set">
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <preferences name="SECTION_STATES" update="set">
+                                <value><![CDATA[true]]></value>
+                                <value><![CDATA[true]]></value>
+                                <value><![CDATA[true]]></value>
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <!--Change WCM_CONTENT_CONTEXT_IDR value to your script application content-Id(UUID)-->
+                            <preferences name="WCM_CONTENT_CONTEXT_IDR" update="set">
+                                <value><![CDATA[d7434d6e-11a1-48c6-9dbc-2c4d6704a638]]></value>
+                            </preferences>
+                            <preferences name="WCM_CONTENT_CONTEXT_IS_REL_PATH" update="set">
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <preferences name="WCM_CONTENT_CONTEXT_TYPE" update="set">
+                                <value><![CDATA[content]]></value>
+                            </preferences>
+                            <preferences name="WCM_CONTENT_TYPE" update="set">
+                                <value><![CDATA[CONTENT]]></value>
+                            </preferences>
+                            <preferences name="WCM_DESIGN_IDR" update="set">
+                                <value/>
+                            </preferences>
+                            <preferences name="WCM_LISTENS_TO" update="set">
+                                <value><![CDATA[WCM_LINKING_NONE]]></value>
+                            </preferences>
+                            <preferences name="WCM_PAGE_TITLE_TYPE" update="set">
+                                <value><![CDATA[WCM_PAGE_TITLE_TYPE_DEFAULT]]></value>
+                            </preferences>
+                            <preferences name="WCM_PORTLET_TITLE_TYPE" update="set">
+                                <value><![CDATA[WCM_PORTLET_TITLE_TYPE_DYN]]></value>
+                            </preferences>
+                            <preferences name="WCM_TAGGING_CATEGORIES_BROADCAST" update="set"/>
+                            <preferences name="com.ibm.portal.wcm.copy.contents" update="set">
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <preferences name="com.ibm.wps.pe.portlet.fragment.cache.expires" update="set">
+                                <value><![CDATA[0]]></value>
+                            </preferences>
+                            <preferences name="com.ibm.wps.pe.portlet.fragment.cache.public" update="set">
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <preferences name="ibm.portal.head.contribution.enabled" update="set">
+                                <value><![CDATA[false]]></value>
+                            </preferences>
+                            <preferences name="meta.tag.name.1" update="set">
+                                <value><![CDATA[description]]></value>
+                            </preferences>
+                            <preferences name="meta.tag.name.2" update="set">
+                                <value><![CDATA[keywords]]></value>
+                            </preferences>
+                            <preferences name="meta.tag.name.3" update="set">
+                                <value><![CDATA[author]]></value>
+                            </preferences>
+                        </portletinstance>
+                    </component>
+                </component>
+                <component action="update" active="true" deletable="undefined" domain="rel" modifiable="undefined" objectid="Z7_UHEAKA0K40O9L6VPV90RTUAC84" ordinal="262144" orientation="H" skinref="undefined" type="container" width="undefined">
+                    <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[secondary]]></parameter>
+                    <parameter name="css-classes" type="string" update="set"><![CDATA[wpthemeLeft wpthemeCol6of12 wpthemeMedium wpthemeCol ibmDndColumn wpthemeSecondaryContainer]]></parameter>
+                </component>
+            </component>
+        </content-node>
+    </portal>
+    <status element="all" result="ok"/>
+</request>

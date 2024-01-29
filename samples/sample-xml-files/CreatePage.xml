@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="update"
+    create-oids="true">
+
+    <!-- Sample for creating a page that contains an existing portlet. -->
+    <portal action="locate">
+        
+        <!-- uid must match uid attribute of portlet-app in portlet.xml -->
+        <web-app action="locate" uid="com.ibm.wps.portlets.welcome">
+           <!-- uid must match uid attribute of concrete-portlet-app in portlet.xml -->
+           <portlet-app action="locate" uid="com.ibm.wps.portlets.welcome.1">
+                <!-- name must match content of portlet-name subtag  of concrete-portlet in portlet.xml -->
+                <portlet action="locate" objectid="theWelcomePortlet" name="Welcome Portlet">
+                </portlet>
+            </portlet-app>
+        </web-app>
+
+        <!-- Parent element under which the new page is inserted -->
+        <content-node action="locate" objectid="parentPage" uniquename="wps.content.root"/>
+
+        <!-- Note that the preceding elements are needed because the XML request uses ID generating mode
+             and the new page must refer to the portlet and the parent place, so the object IDs
+             thePortlet and wps.content.root.My_Portal must be defined.
+             If you use ID preserving mode and have the correct objectid values for these two resources,
+             you do not need to locate them. -->
+        
+        <!-- The new page. contentparentref attribute must match the objectid of the parent. 
+             Change the uniquename attribute to create another page. -->
+        <content-node action="update" active="true" allportletsallowed="true" content-parentref="parentPage" create-type="explicit" domain="rel" ordinal="last" type="staticpage" uniquename="wps.content.root.WelcomePage2">
+            <localedata locale="en"><title>Welcome Page 2</title></localedata>
+            <!-- The content of static page in binary format 
+                 attribute markup can be set to one of portal server supported markups
+                 attribute display-option can be set to "inline" or "iframe" or "ajax".-->
+            <pagecontents markup="html" display-option="inline">
+                <content>UEsDBBQACAAIALKbTDcAAAAAAAAAAAAAAAALAAAAaW5kZXgxLmh0bWxtUE1rwzAMvQf6H0TuTeh1
+ZL7stFsghZ5VW2sEjmxir1n//YTdbDAGOoj3IelpmAmdOTRD5uzJTLhETzBlzGxhxBsNfWVU0u/a
+a3APc9AmmvPMCbQQUvVE9QB9lTkdFLpAMyYIQhDDquPyu6heLMGFvA0LwVjxDurcHX7Khz6WhY7v
+YD2m9No+maMNkpGF1hYEF/oh3nb81Jr/nRuLC9sf26WAp1bzPPwvfHT0wcKZg7xsMXWx2y88B81w
+neJMa02BvizsdWO5uTZNiTV6wkRw58QZPvVtNz2xhFNdfWvzDVBLBwjDeEQR4AAAAJMBAABQSwEC
+FAAUAAgACACym0w3w3hEEeAAAACTAQAACwAAAAAAAAAAAAAAAAAAAAAAaW5kZXgxLmh0bWxQSwUG
+AAAAAAEAAQA5AAAAGQEAAAAA</content>
+            </pagecontents>
+            <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_dojo_lightweight.json]]></parameter>
+            <parameter name="com.ibm.portal.bookmarkable" type="string" update="set"><![CDATA[Yes]]></parameter>
+            <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[staticpage2]]></parameter>
+            <!-- this parameter must match the name of static page -->
+            <parameter name="com.ibm.portal.static.page.file.name.html" type="string" update="set"><![CDATA[index1.html]]></parameter>
+            <access-control externalized="false" owner="uid=wpsadmin,o=defaultwimfilebasedrealm" private="false"/>
+            <component action="update" active="true" domain="rel" ordinal="100" orientation="V" type="container">
+                <component action="update" active="true" domain="rel" ordinal="100" orientation="V" type="container"/>
+                <component action="update" active="true" domain="rel" ordinal="100" orientation="H" type="container">
+                    <!-- this parameter must match the portlet-container name in the static page -->
+                    <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[portletContainer1]]></parameter>
+                    <component action="update" active="true" domain="rel" ordinal="100" type="control">
+                        <!-- this parameter must match the portlet-window name in the static page -->
+                        <parameter name="com.ibm.portal.layoutnode.localname" type="string" update="set"><![CDATA[portletWindow1]]></parameter>
+                        <portletinstance action="update" domain="rel" portletref="theWelcomePortlet" />
+                    </component>
+                </component>
+            </component>
+        </content-node>
+
+    </portal>
+</request>

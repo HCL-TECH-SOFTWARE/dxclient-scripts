@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ ********************************************************************
+ * Licensed Materials - Property of HCL                             *
+ *                                                                  *
+ * Copyright IBM Corp. 2000. All Rights Reserved.                   *
+ * Copyright HCL Technologies Ltd. 2001, 2021. All Rights Reserved. *
+ *                                                                  *
+ * Note to US Government Users Restricted Rights:                   *
+ *                                                                  *
+ * Use, duplication or disclosure restricted by GSA ADP Schedule    *
+ ********************************************************************
+ */
+-->
+
+<request
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="PortalConfig_8.0.0.xsd"
+    type="export" domain="rel">
+
+    <!-- Sample for exporting the unique elements of a release. This script exports the Portal pages 
+	       and url-mappings. This script is useful for staging to production scenarios. -->
+    <portal action="locate">
+        <content-node action="export" uniquename="wps.content.root" export-descendants="true"/>
+        <cross-page-wire action="export" objectid="*"/>
+        <url-mapping-context action="export" objectid="*" />
+    </portal>
+</request>
