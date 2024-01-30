@@ -20,7 +20,7 @@
 # The script is a wrapper to run dxclient tool.
 #
 
-IMAGE_NAME="hclcr.io/dx/dxclient"
+IMAGE_NAME="hclcr.io/dx-public/dxclient"
 IMAGE_TAG="<IMAGE_TAG>"
 DXCLIENT="dxclient"
 DATA_DIR="store"
