@@ -21,7 +21,7 @@ SETLOCAL EnableDelayedExpansion
 :: The script is a wrapper to run dxclient tool. 
 ::
 
-SET IMAGE_NAME=hclcr.io/dx/dxclient
+SET IMAGE_NAME=hclcr.io/dx-public/dxclient
 SET IMAGE_TAG=<IMAGE_TAG>
 SET DXCLIENT=dxclient
 SET DATA_DIR=store

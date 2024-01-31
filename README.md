@@ -28,7 +28,7 @@ Complete the following steps to install the DXClient tool to your local developm
 2. On a terminal execute the following command and just change the `IMAGE_TAG` to match the `IMAGE_TAG` of the dxclient you have selected.
 
 ``` shell
- docker pull hclcr.io/dx/dxclient:IMAGE_TAG
+ docker pull hclcr.io/dx-public/dxclient:IMAGE_TAG
 ```
 
 <!-- TODO: Verify if we still need to use releases
@@ -44,14 +44,14 @@ Complete the following steps to install the DXClient tool to your local developm
 	In `dxclient` file (Linux and Apple MacOS platforms)
 
 	``` shell
-	IMAGE_NAME="hclcr.io/dx/dxclient"
+	IMAGE_NAME="hclcr.io/dx-public/dxclient"
 	IMAGE_TAG="v95_CF216_20231114"
 	```
 
 	In `dxclient.bat` file (Microsoft Windows platforms)
 
 	``` cmd
-	SET IMAGE_NAME=hclcr.io/dx/dxclient
+	SET IMAGE_NAME=hclcr.io/dx-public/dxclient
 	SET IMAGE_TAG=v95_CF216_20231114
 	```
 
@@ -92,7 +92,7 @@ A sample configuration file that could be used on-premises platforms in standalo
 To uninstall the DXClient tool, follow the command below.
 
 ``` shell
-docker rmi hclcr.io/dx/dxclient:IMAGE_TAG
+docker rmi hclcr.io/dx-public/dxclient:IMAGE_TAG
 ```
 
 ## DXClient Help commands
