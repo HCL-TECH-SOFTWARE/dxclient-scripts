@@ -13,7 +13,7 @@ DXClient can take artifacts developed locally and deploy them to HCL DX servers 
 DXClient is meant to be the one-stop, platform-independent solution that lets you integrate HCL DX with any automation infrastructure of your choice.
 
 > **Important Note related to DXClient version & distribution:**
-> DXClient is now available free to download/install through NpmJS and harbor repositories. Following the decision to openly distribute DXClient, we have changed the current versioning format of DXClient from 1.xx.x to <CFNumber>.x.x. For example, the last release version of DXClient was "1.29.0" but the upcoming release is reformatted to "221.0.0". The number 221 is synonymous with the CF Number version of DX deployments.
+> DXClient is now available free to download/install through NpmJS and harbor repositories. Following the decision to openly distribute DXClient, we have changed the current versioning format of DXClient from 1.xx.x to \<CFNumber\>.x.x. For example, the last release version of DXClient was "1.29.0" but the upcoming release is reformatted to "221.0.0". The number 221 is synonymous with the CF Number version of DX deployments.
 
 ## Requirements
 
