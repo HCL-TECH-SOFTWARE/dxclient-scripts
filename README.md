@@ -42,35 +42,35 @@ Complete the following steps to install the DXClient tool to your local developm
 
 3. Update the `IMAGE_TAG` and `IMAGE_NAME` variable of the downloaded file to match the image you have pulled from the HCL open harbor.
 
-	**Examples:**
+ **Examples:**
 
-	In `dxclient` file (Linux and Apple MacOS platforms)
+ In `dxclient` file (Linux and Apple MacOS platforms)
 
-	``` shell
-	IMAGE_NAME="hclcr.io/dx-public/dxclient"
-	IMAGE_TAG="v95_CF216_20231114"
-	```
+ ``` shell
+ IMAGE_NAME="hclcr.io/dx-public/dxclient"
+ IMAGE_TAG="v95_CF216_20231114"
+ ```
 
-	In `dxclient.bat` file (Microsoft Windows platforms)
+ In `dxclient.bat` file (Microsoft Windows platforms)
 
-	``` cmd
-	SET IMAGE_NAME=hclcr.io/dx-public/dxclient
-	SET IMAGE_TAG=v95_CF216_20231114
-	```
+ ``` cmd
+ SET IMAGE_NAME=hclcr.io/dx-public/dxclient
+ SET IMAGE_TAG=v95_CF216_20231114
+ ```
 
 4. Run the files below to run the application.
 
-	For Linux and Apple MacOS platforms
+ For Linux and Apple MacOS platforms
 
-	``` shell
-	dxclient
-	```
+ ``` shell
+ dxclient
+ ```
 
-	For Microsoft Windows platforms:
+ For Microsoft Windows platforms:
 
-	``` cmd
-	dxclient.bat
-	```
+ ``` cmd
+ dxclient.bat
+ ```
 
 > Note: The following commands will be using `dxclient`, if you are on Microsoft Windows platform use `dxclient.bat` instead.
 
@@ -87,113 +87,117 @@ Once installed, commands can be executed using the DXClient tool to perform CI /
 
 ### DXClient Release Timelines & Updates
 
-1. If connecting to an HCL DX 9.5 CF19 deployment, the DXClient tool provides commands supporting the following artifact types along with the documentation
+<details>
+  <summary>Show Changelog Details</summary>
+  
+  1. If connecting to an HCL DX 9.5 CF19 deployment, the DXClient tool provides commands supporting the following artifact types along with the documentation
 
   - deploy/undeploy portlets 
   - deploy script applications
   - xmlaccess
   - restore script application
 
-2. If connecting to an HCL DX 9.5 CF192 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  2. If connecting to an HCL DX 9.5 CF192 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - undeploy script applications
   - deploy themes (EAR & WebDAV based)
 
-3. If connecting to an HCL DX 9.5 CF193 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  3. If connecting to an HCL DX 9.5 CF193 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - restart application
   - deploy application
   - manage syndicator
   - manage subscriber
 
-4. If connecting to an HCL DX 9.5 CF195 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  4. If connecting to an HCL DX 9.5 CF195 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - undeploy theme
 
-5. If connecting to an HCL DX 9.5 CF196 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  5. If connecting to an HCL DX 9.5 CF196 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - shared library
 
-6. If connecting to an HCL DX 9.5 CF197 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  6. If connecting to an HCL DX 9.5 CF197 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Get Syndication failed report
   - Delete DAM schema
 
-7. If connecting to an HCL DX 9.5 CF198 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  7. If connecting to an HCL DX 9.5 CF198 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Resource Environment Provider Updates - Create,update and delete
   - Create/import/export/list of virtual portal
   - Import and Export PZN
   - List DAM schemas
 
-8. If connecting to an HCL DX 9.5 CF199 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  8. If connecting to an HCL DX 9.5 CF199 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Resource Environment Provider Updates - Export and Import
   - Create Credential Vault Slot
   - Create Syndication Relation
   - DAM Staging - Register, Deregister and Trigger
 
-9. If connecting to an HCL DX 9.5 CF200 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  9. If connecting to an HCL DX 9.5 CF200 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - WCM Libraries - Export and Import
   - DX Core Configuration Reports - summary-report
 
-10. If connecting to an HCL DX 9.5 CF201 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  10. If connecting to an HCL DX 9.5 CF201 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - An optional parameter requestId added to Deploy theme, Deploy application, Restart DX Core server, and Manage virtual portals.
   - Retrieve feature added to the Resource environment provider.
   - Accessing ConfigWizard in container environment
-Note that a few parameters are deprecated and replaced with new parameters in the DX Core configuration reports. For information, see DX Core server configuration report.
+  Note that a few parameters are deprecated and replaced with new parameters in the DX Core configuration reports. For information, see DX Core server configuration report.
 
-11. If connecting to an HCL DX 9.5 CF202 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  11. If connecting to an HCL DX 9.5 CF202 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Deprecated parameter dxConnectHostname. It is recommended that you start using the replacement parameter -hostname starting from CF202 wherever necessary.
   - DAM Assets Export & import
 
-12. If connecting to an HCL DX 9.5 CF207 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  12. If connecting to an HCL DX 9.5 CF207 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Support to set different Container Runtimes.
 
-13. If connecting to an HCL DX 9.5 CF208 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  13. If connecting to an HCL DX 9.5 CF208 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Get all subscribers details for DAM staging
 
-14. If connecting to an HCL DX 9.5 CF209 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
+  14. If connecting to an HCL DX 9.5 CF209 deployment, the DXClient tool provides commands supporting the following additional artifact types along with the documentation
 
   - Restart Core Pods in a Kubernetes Deployment
 
-15. If connecting to an HCL DX 9.5 CF210 deployment, following changes are to be expected.
+  15. If connecting to an HCL DX 9.5 CF210 deployment, following changes are to be expected.
 
   - Removed paramaters deprecated during CF201 & CF202 deployment.
   - added ability to export/import wcm libraries in Virtual Portal.
 
-16. If connecting to an HCL DX 9.5 CF211 deployment, following changes are to be expected.
+  16. If connecting to an HCL DX 9.5 CF211 deployment, following changes are to be expected.
 
   - Deploy and Undeploy Applications
 
-17. If connecting to an HCL DX 9.5 CF213 deployment, following changes are to be expected.
+  17. If connecting to an HCL DX 9.5 CF213 deployment, following changes are to be expected.
 
   - Livesync of WebDAV based Themes
 
-18. If connecting to an HCL DX 9.5 CF214 deployment, following changes are to be expected.
+  18. If connecting to an HCL DX 9.5 CF214 deployment, following changes are to be expected.
 
   - Livesync Improvements
-	  - List themes during Pull theme in case themeName is not provided.
-	  - Livesync is now supported in scaled DX environment setups
+    - List themes during Pull theme in case themeName is not provided.
+    - Livesync is now supported in scaled DX environment setups
 
-19. If connecting to an HCL DX 9.5 CF216 deployment, following changes are to be expected.
+  19. If connecting to an HCL DX 9.5 CF216 deployment, following changes are to be expected.
 
   - Show Version compatibility details between DXCore and DXClient
 
-20. If connecting to an HCL DX 9.5 CF219 deployment, following changes are to be expected.
+  20. If connecting to an HCL DX 9.5 CF219 deployment, following changes are to be expected.
 
   - Enabled multiple environment configuration in node version
 
-21. If connecting to an HCL DX 9.5 CF221 deployment, following changes are to be expected.
+  21. If connecting to an HCL DX 9.5 CF221 deployment, following changes are to be expected.
 
   - DXClient Version Type(Node/Container) information available using help/version-compat commands
   - A one time license agreement click-through is enabled. To skip the prompt, use "accept-license" command.
   - DXClient will be openly distributed in NpmJS & harbor repository.
+</details>
 
 ## DXClient configuration
 
