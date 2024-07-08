@@ -1,22 +1,16 @@
 #!/bin/bash
-##############################################################
-# Licensed to the Apache Software Foundation (ASF) under one  
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information       
-# regarding copyright ownership.  The ASF licenses this file  
-# to you under the Apache License, Version 2.0 (the           
-# "License"); you may not use this file except in compliance  
-# with the License.  You may obtain a copy of the License at  
-#                                                             
-#   http://www.apache.org/licenses/LICENSE-2.0                
-#                                                             
-# Unless required by applicable law or agreed to in writing,  
-# software distributed under the License is distributed on an 
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY      
-# KIND, either express or implied.  See the License for the   
-# specific language governing permissions and limitations     
-# under the License.                                          
-##############################################################
+#/*
+#********************************************************************
+#* Licenses Materials - Property of HCL                             *
+#*                                                                  *
+#* Copyright HCL Technologies Ltd. 2021, 2024. All Rights Reserved. *
+#*                                                                  *
+#* Note to US Government Users Restricted Rights:                   *
+#*                                                                  *
+#* Use, duplication or disclosure restricted by GSA ADP Schedule    *
+#********************************************************************
+#*/
+#
 # The script is a wrapper to run dxclient tool.
 #
 
@@ -24,6 +18,7 @@ IMAGE_NAME="hclcr.io/dx-public/dxclient"
 IMAGE_TAG="<IMAGE_TAG>"
 DXCLIENT="dxclient"
 DATA_DIR="store"
+MOUNT_LIST=
 regEx="[[:space:]]+" # matches a string with atleast one space character in it.
 
 # provides users option to set Volume directory
@@ -79,6 +74,7 @@ check_cmd_in_path $CONTAINER_RUNTIME
 # extract execution command arguments into a variable
 execCmd=("$@")
 copyOfExecCmd=("$@")
+hostPath=$(pwd)
 
 #creates volume directory if not present
 if [ ! -d "$(pwd)/$VOLUME_DIR" ]; then
@@ -86,38 +82,48 @@ if [ ! -d "$(pwd)/$VOLUME_DIR" ]; then
 fi
 
 # Set initial volume parameter & container folder
-containerFolder=/$DXCLIENT/$DATA_DIR
+containerFolder=/$DXCLIENT/$VOLUME_DIR
 volumeParams="-v \"$(pwd)/$VOLUME_DIR:/${containerFolder}\":Z"
 
 # Generate a separate volume for each folder or file in the parameter
 # Replace the folders in the parameter with the assigned container folder in volume parameter
 for i in "${!execCmd[@]}"; do
+    # Check if -exportPath exist
+    if [[ "${execCmd[$i]}" == "-exportPath" || "${execCmd[$i]}" == "-themePath" ]]; then
+      # then pass the value of exportPath, themePath to hostPath variable that is passed also as env
+      hostPath=${execCmd[$i+1]}
+    fi
     if [[ -e ${execCmd[$i]} ]] && [[ "${execCmd[$i]}" == *"/"* ]]; then
-
          # Check if relative path and convert to absolute
         localPath=${execCmd[$i]}
         localPath=$(getAbsolutePath "${localPath}")
-       
-        # add this folder/filepath to volume parameter 
+
+        # Add input to the mount list
+        MOUNT_LIST+=$localPath
+
+        # add this folder/filepath to volume parameter
         volumeParams="${volumeParams} -v \"${localPath}\":\"${containerFolder}/$(basename "${localPath}")\":Z"
-        
+
         # Replace parameter with the folder known to the container
         execCmd[$i]=\"${containerFolder}/$(basename "${localPath}")\"
-    # the following else condition checks if space is present and enclose the string within quotes   
+    # the following else condition checks if space is present and enclose the string within quotes
     elif [[ ${execCmd[$i]} =~ $regEx ]]; then
       execCmd[$i]=\"${execCmd[$i]}\"
-    fi 
+    fi
 done
-eval $CONTAINER_RUNTIME run -e VOLUME_DIR=\"$VOLUME_DIR\" -u="$(echo $UID)" $TTY_FLAG -e TZ=$Timezone $volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
 
-# Cleanup the files created in local volume/mount point if the command is livesync
-if [ ${copyOfExecCmd[0]} = "livesync" ]; then
-  for i in "${!copyOfExecCmd[@]}"; do
+eval $CONTAINER_RUNTIME run -e DXCLIENT_RUNTIME=\"$CONTAINER_RUNTIME\" -e HOST_PATH=\"$hostPath\" -e VOLUME_DIR=\"$VOLUME_DIR\" -u="$(echo $UID)" $TTY_FLAG -e TZ=$Timezone $volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
+
+
+# Cleanup the files created in local volume/mount point if the command is livesync or export-assets
+if [[ ${copyOfExecCmd[0]} == "livesync" || ${copyOfExecCmd[1]} == "export-assets" ]]; then
+ for i in $MOUNT_LIST; do
     # Check if relative path and convert to absolute
-    localPath=${copyOfExecCmd[$i]}
-    localPath=$(getAbsolutePath "${localPath}")
+    localPath=$(getAbsolutePath "${i}")
     if [[ -e ${localPath} ]]; then
-      rm -rf "$(pwd)/$VOLUME_DIR/$(basename "${localPath}")"
+      if [[ $localPath != $(getAbsolutePath "./${VOLUME_DIR}")* ]]; then
+        rm -rf "$(pwd)/$VOLUME_DIR/$(basename "${localPath}")"
+      fi
     fi
   done
 fi
