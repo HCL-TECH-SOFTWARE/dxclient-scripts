@@ -38,8 +38,8 @@
             <!--Must provide proper references in parameters-->
             <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[MyCustomTheme]]></parameter>
             <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_deferred.json]]></parameter>
-            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/]]></parameter>
-            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/layout-templates/2ColumnEqual/]]></parameter>
+            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[war:wps/DXStaticTheme/themes/DXTheme/]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[war:wps/DXStaticTheme/themes/DXTheme/layout-templates/2ColumnEqual/]]></parameter>
         </theme>
         <theme action="update" active="true" context-root="/wps/simpleTheme" default="false" defaultskinref="ZK_00000000000000A0BR2B300670" domain="rel" resourceroot="dynamicSpots" uniquename="custom.portal.theme.simple-demo">
             <localedata locale="en">

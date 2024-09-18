@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <request type="update" version="8.5.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="PortalConfig_8.5.0.xsd">
     <portal action="locate">
-    	<theme action="update" active="true" context-root="wps/SampleApplication" default="false" defaultskinref="ZK_00000000000000A0BR2B300670" domain="rel" resourceroot="dynamicSpots" uniquename="SampleApplication">
+    	<theme action="update" active="true" context-root="wps/DxDemo" default="false" defaultskinref="ZK_00000000000000A0BR2B300670" domain="rel" resourceroot="dynamicSpots" uniquename="DxDemo">
 			<localedata locale="en">
-                <title>SampleApplication</title>
+                <title>DxDemo</title>
             </localedata>
             <allowed-skin skin="ZK_00000000000000A0BR2B300670" update="set"/>
 			<allowed-skin skin="ZK_00000000000000A0BR2B300672" update="set"/>
 			<allowed-skin skin="ZK_00000000000000A0BR2B300674" update="set"/>
 			<allowed-skin skin="ZK_00000000000000A0BR2B300676" update="set"/>
-            <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[SampleApplication]]></parameter>
+            <parameter name="com.ibm.portal.friendly.name" type="string" update="set"><![CDATA[DxDemo]]></parameter>
             <parameter name="resourceaggregation.profile" type="string" update="set"><![CDATA[profiles/profile_deferred.json]]></parameter>
-            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/]]></parameter>
-            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[war:wps/3MStaticTheme/themes/3MTheme/layout-templates/2ColumnEqual/]]></parameter>
+            <parameter name="com.ibm.portal.theme.template.ref" type="string" update="set"><![CDATA[war:wps/DXStaticTheme/themes/DXTheme/]]></parameter>
+            <parameter name="com.ibm.portal.layout.template.href" type="string" update="set"><![CDATA[war:wps/DXStaticTheme/themes/DXTheme/layout-templates/2ColumnEqual/]]></parameter>
         </theme>
     </portal>
 </request>
