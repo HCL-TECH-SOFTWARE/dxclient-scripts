@@ -20,12 +20,23 @@ All notable changes to this project will be documented in this file.
 
 - No changes
 
-## [221.0.0] - HCL DX 9.5 CF221
+## [[221.0.0](https://opensource.hcltechsw.com/digital-experience/CF221/whatsnew/cf20/newcf221/#new-options-for-installing-dxclient)] - HCL DX 9.5 CF221
 
 ### Changes
 
-<!-- link to https://opensource.hcltechsw.com/digital-experience/CF221/whatsnew/cf20/newcf221/ docs what's new page when it is released -->
 - Versioning format of DXClient from 1.xx.x to \<CFNumber\>.x.x. to be synonymous with the CF Number version of DX deployments.
 - DXClient Version Type(Node/Container) information available using help/version-compat commands
 - A one time license agreement click-through is enabled. To skip the prompt, use "accept-license" command.
 - DXClient will be openly distributed in NpmJS & harbor repository.
+
+## [222.0.0] - HCL DX 9.5 CF222
+
+### Changes
+
+- No changes
+
+## [223.0.0] - HCL DX 9.5 CF222
+
+### Changes
+
+- New table of DXClient Image tags in the README of this repository.

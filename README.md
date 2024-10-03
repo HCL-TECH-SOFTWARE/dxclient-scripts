@@ -27,8 +27,21 @@ To use these tools you will need:
 
 Complete the following steps to install the DXClient tool to your local development workstation or automation server.
 
-1. Go to [HCL Open Harbor](https://hclcr.io/harbor/projects/95/repositories/dxclient/artifacts-tab) and then select the dxclient version you want.
-2. On a terminal execute the following command and just change the `IMAGE_TAG` to match the `IMAGE_TAG` of the dxclient you have selected.
+1. In this table, find the dxclient version you're interested in, and then copy the corresponding Image Tag.
+
+    | Version | Image Tag               | Date       |
+    |---------|-------------------------|------------|
+    | CF223   | v95_CF223_20240925-1911 | 2024-09-25 |
+    | CF222   | v95_CF222_20240814-1252 | 2024-08-14 |
+    | CF221   | v95_CF221_20240708-2007 | 2024-07-08 |
+    | CF220   | v95_CF220_20240522-1920 | 2024-05-22 |
+    | CF219   | v95_CF219_20240409-1526 | 2024-04-09 |
+    | CF218   | v95_CF218_20240226-1619 | 2024-02-26 |
+    | CF217   | v95_CF217_20240117-2358 | 2024-01-17 |
+    | CF216   | v95_CF216_20231114-2138 | 2023-11-14 |
+    | CF215   | v95_CF215_20231004-1320 | 2023-10-04 |
+
+2. On a terminal execute the following command and just change the `IMAGE_TAG` to match the `Image Tag` of the dxclient you have want.
 
 ``` shell
  docker pull hclcr.io/dx-public/dxclient:IMAGE_TAG
@@ -48,14 +61,14 @@ Complete the following steps to install the DXClient tool to your local developm
 
  ``` shell
  IMAGE_NAME="hclcr.io/dx-public/dxclient"
- IMAGE_TAG="v95_CF216_20231114"
+ IMAGE_TAG="v95_CF223_20240925-1911"
  ```
 
  In `dxclient.bat` file (Microsoft Windows platforms)
 
  ``` cmd
  SET IMAGE_NAME=hclcr.io/dx-public/dxclient
- SET IMAGE_TAG=v95_CF216_20231114
+ SET IMAGE_TAG=v95_CF223_20240925-1911
  ```
 
 4. Run the files below to run the application.
