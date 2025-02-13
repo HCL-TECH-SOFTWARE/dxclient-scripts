@@ -31,6 +31,8 @@ Complete the following steps to install the DXClient tool to your local developm
 
     | Version | Image Tag               | Date       |
     |---------|-------------------------|------------|
+    | CF225   | v95_CF225_20250203-2238 | 2025-02-25 |
+    | CF224   | v95_CF224_20241210-2249 | 2024-12-17 |
     | CF223   | v95_CF223_20240925-1911 | 2024-09-25 |
     | CF222   | v95_CF222_20240814-1252 | 2024-08-14 |
     | CF221   | v95_CF221_20240708-2007 | 2024-07-08 |
@@ -61,14 +63,14 @@ Complete the following steps to install the DXClient tool to your local developm
 
  ``` shell
  IMAGE_NAME="hclcr.io/dx-public/dxclient"
- IMAGE_TAG="v95_CF223_20240925-1911"
+ IMAGE_TAG="v95_CF225_20250203-2238"
  ```
 
  In `dxclient.bat` file (Microsoft Windows platforms)
 
  ``` cmd
  SET IMAGE_NAME=hclcr.io/dx-public/dxclient
- SET IMAGE_TAG=v95_CF223_20240925-1911
+ SET IMAGE_TAG=v95_CF225_20250203-2238
  ```
 
 4. Run the files below to run the application.
@@ -210,6 +212,14 @@ Once installed, commands can be executed using the DXClient tool to perform CI /
   - DXClient Version Type(Node/Container) information available using help/version-compat commands
   - A one time license agreement click-through is enabled. To skip the prompt, use "accept-license" command.
   - DXClient will be openly distributed in NPMJS & Harbor repository.
+
+  22. If connecting to an HCL DX 9.5 CF224 deployment, following changes are to be expected.
+
+  - LiveSync Pull and Push commands for WCM Design Library are now available for HTML and Folder Components.
+
+  23. If connecting to an HCL DX 9.5 CF225 deployment, following changes are to be expected.
+
+  - LiveSync now supports Presentation Templates.
 </details>
 
 ## DXClient configuration
@@ -307,6 +317,8 @@ dxclient version-compat [command] [options]
 | dxclient | restart-core-pods [options]         | Command to execute the Restart Core Pods action (for Kubernetes deployments)|
 | dxclient | livesync push-theme [options]       | Command for watching a theme folder path live and syncs it in DX Server|
 | dxclient | livesync pull-theme [options]       | Command for downloading theme files from DX Server to a target local theme folder|
+| dxclient | livesync push-wcm-design-library [options]       | Command watching a WCM Design Library folder path live and syncs it in DX Server|
+| dxclient | livesync pull-wcm-design-library [options]       | Command for downloading WCM Design Library files from DX Server to a target local folder|
 
 ## Command options
 

@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 
 - No changes
 
-## [[221.0.0](https://opensource.hcltechsw.com/digital-experience/CF221/whatsnew/cf20/newcf221/#new-options-for-installing-dxclient)] - HCL DX 9.5 CF221
+## [[221.0.0](https://help.hcl-software.com/digital-experience/9.5/CF225/whatsnew/cf20/newcf221/#new-options-for-installing-dxclient)] - HCL DX 9.5 CF221
 
 ### Changes
 
@@ -35,8 +35,20 @@ All notable changes to this project will be documented in this file.
 
 - No changes
 
-## [223.0.0] - HCL DX 9.5 CF222
+## [223.0.0] - HCL DX 9.5 CF223
 
 ### Changes
 
 - New table of DXClient Image tags in the README of this repository.
+
+## [[224.0.0](https://help.hcl-software.com/digital-experience/9.5/CF225/whatsnew/cf20/newcf224/#dxclient-livesync-pull-and-push-commands-for-wcm-design-library)] - HCL DX 9.5 CF224
+
+### Changes
+
+- LiveSync Pull and Push commands for WCM Design Library are now available for HTML and Folder Components.
+
+## [[225.0.0](https://help.hcl-software.com/digital-experience/9.5/CF225/whatsnew/cf20/newcf225/#dxclient-livesync-enabled-for-presentation-templates)] - HCL DX 9.5 CF225
+
+### Changes
+
+- LiveSync now supports Presentation Templates.
