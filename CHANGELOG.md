@@ -52,3 +52,10 @@ All notable changes to this project will be documented in this file.
 ### Changes
 
 - LiveSync now supports Presentation Templates.
+
+## [[226.0.0](https://help.hcl-software.com/digital-experience/9.5/CF226/whatsnew/cf20/newcf226/#dxclient-tls-certificate-validation)] - HCL DX 9.5 CF226
+
+### Changes
+
+- DXClient no longer ignores certificates that cannot be properly validated when using Transport Layer Security (TLS) connections
+- New documented limitations for LiveSync

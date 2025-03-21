@@ -60,6 +60,14 @@ CALL SET "newCmd="
 :: curated set of environmental variables
 CALL SET environmentVars= -e TZ=!Timezone! -e VOLUME_DIR="!VOLUME_DIR!"
 
+:: Check if the environment variable NODE_EXTRA_CA_CERTS is set
+if defined NODE_EXTRA_CA_CERTS (
+    for %%F in ("!NODE_EXTRA_CA_CERTS!") do (
+        set "filename=%%~nxF"
+    ) 
+    CALL set "volumeParams=!volumeParams! -v "!NODE_EXTRA_CA_CERTS!:/etc/ssl/certs/!filename!":Z"
+)
+
 :: Setting search value "\" for validating filepath
 CALL SET searchVal=\
 SET hostPath=%CD%
@@ -88,6 +96,18 @@ if /I "%~1"=="-exportPath" (
         shift
     )
 ) else if /I "%~1"=="--themePath" (
+    set exportPathExists=1
+    if not "%~2"=="" (
+        set hostPath="%~2"
+        shift
+    )
+) else if /I "%~1"=="-wcmLibraryPath" (
+    set exportPathExists=1
+    if not "%~2"=="" (
+        set hostPath="%~2"
+        shift
+    )
+) else if /I "%~1"=="--libraryPath" (
     set exportPathExists=1
     if not "%~2"=="" (
         set hostPath="%~2"
