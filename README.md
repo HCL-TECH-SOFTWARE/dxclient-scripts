@@ -21,7 +21,7 @@ DXClient is meant to be the one-stop, platform-independent solution that lets yo
 **Warning** - Recent changes to Podman introduced by RedHat have caused a compatibility issue with the container implementation of DXClient. HCL is currently investigating how this might be resolved. Until further notice, Docker is recommended for using the DXClient container implementation.
 
 > **Important Note related to DXClient version & distribution:**
-> DXClient is now available free to download/install through NpmJS and harbor repositories. Following the decision to openly distribute DXClient, we have changed the current versioning format of DXClient from 1.xx.x to CFNumber.x.x. For example, the old release version of DXClient was "1.29.0" but the upcoming releases is reformatted to "221.0.0". The number 221 is synonymous with the CF Number version of DX deployments.
+> DXClient is now available free to download/install through NpmJS and Harbor repositories. Following the decision to openly distribute DXClient, we have changed the current versioning format of DXClient from 1.xx.x to CFNumber.x.x. For example, the old release version of DXClient was "1.29.0" but the upcoming releases is reformatted to "221.0.0". The number 221 is synonymous with the CF Number version of DX deployments.
 
 ## Requirements
 
@@ -44,6 +44,54 @@ Complete the following steps to install the DXClient tool to your local developm
     | CF224   | v95_CF224_20241210-2249 | 2024-12-17 |
     | CF223   | v95_CF223_20240925-1911 | 2024-09-25 |
     | CF222   | v95_CF222_20240814-1252 | 2024-08-14 |
+
+<details>
+ <summary>Legacy Container Version and Tag Information</summary>
+ <br>
+ <table>
+  <tr>
+    <th>Version</th>
+    <th>Image Tag</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td>CF221</td>
+    <td>v95_CF221_20240708-2007</td>
+    <td>2024-07-08</td>
+  </tr>
+  <tr>
+    <td>CF220</td>
+    <td>v95_CF220_20240522-1920</td>
+    <td>2024-05-22</td>
+  </tr>
+  <tr>
+    <td>CF219</td>
+    <td>v95_CF219_20240409-1526</td>
+    <td>2024-04-09</td>
+  </tr>
+  <tr>
+    <td>CF218</td>
+    <td>v95_CF218_20240226-1619</td>
+    <td>2024-02-26</td>
+  </tr>
+  <tr>
+    <td>CF217</td>
+    <td>v95_CF217_20240117-2358</td>
+    <td>2024-01-17</td>
+  </tr>
+  <tr>
+    <td>CF216</td>
+    <td>v95_CF216_20231114-2138</td>
+    <td>2023-11-14</td>
+  </tr>
+  <tr>
+    <td>CF215</td>
+    <td>v95_CF215_20231004-1320</td>
+    <td>2023-10-04</td>
+  </tr>
+</table>
+</details>
+
 
 2. On a terminal execute the following command and just change the `IMAGE_TAG` to match the `Image Tag` of the dxclient you have want.
 
@@ -346,78 +394,6 @@ If logger enabled then logger file will be available in the below location:
 Logger can be disabled by setting parameter "enableLogger":false in the `config.json` file
 
 ### List of Available Images
-
-<details>
- <summary>Full Version and Tag Information</summary>
- <br>
- <table>
-  <tr>
-    <th>Version</th>
-    <th>Image Tag</th>
-    <th>Date</th>
-  </tr>
-  <tr>
-    <td>CF226</td>
-    <td>v95_CF226_20250314-1505</td>
-    <td>2025-03-18</td>
-  </tr>
-  <tr>
-    <td>CF225</td>
-    <td>v95_CF225_20250203-2238</td>
-    <td>2025-02-25</td>
-  </tr>
-  <tr>
-    <td>CF224</td>
-    <td>v95_CF224_20241210-2249</td>
-    <td>2024-12-17</td>
-  </tr>
-  <tr>
-    <td>CF223</td>
-    <td>v95_CF223_20240925-1911</td>
-    <td>2024-09-25</td>
-  </tr>
-  <tr>
-    <td>CF222</td>
-    <td>v95_CF222_20240814-1252</td>
-    <td>2024-08-14</td>
-  </tr>
-  <tr>
-    <td>CF221</td>
-    <td>v95_CF221_20240708-2007</td>
-    <td>2024-07-08</td>
-  </tr>
-  <tr>
-    <td>CF220</td>
-    <td>v95_CF220_20240522-1920</td>
-    <td>2024-05-22</td>
-  </tr>
-  <tr>
-    <td>CF219</td>
-    <td>v95_CF219_20240409-1526</td>
-    <td>2024-04-09</td>
-  </tr>
-  <tr>
-    <td>CF218</td>
-    <td>v95_CF218_20240226-1619</td>
-    <td>2024-02-26</td>
-  </tr>
-  <tr>
-    <td>CF217</td>
-    <td>v95_CF217_20240117-2358</td>
-    <td>2024-01-17</td>
-  </tr>
-  <tr>
-    <td>CF216</td>
-    <td>v95_CF216_20231114-2138</td>
-    <td>2023-11-14</td>
-  </tr>
-  <tr>
-    <td>CF215</td>
-    <td>v95_CF215_20231004-1320</td>
-    <td>2023-10-04</td>
-  </tr>
-</table>
-</details>
 
 ## [DXClient Documentation](https://opensource.hcltechsw.com/digital-experience/latest/extend_dx/development_tools/dxclient/)
 
