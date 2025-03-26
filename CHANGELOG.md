@@ -27,7 +27,7 @@ All notable changes to this project will be documented in this file.
 - Versioning format of DXClient from 1.xx.x to \<CFNumber\>.x.x. to be synonymous with the CF Number version of DX deployments.
 - DXClient Version Type(Node/Container) information available using help/version-compat commands
 - A one time license agreement click-through is enabled. To skip the prompt, use "accept-license" command.
-- DXClient will be openly distributed in NpmJS & harbor repository.
+- DXClient will be openly distributed in NpmJS & Harbor repository.
 
 ## [222.0.0] - HCL DX 9.5 CF222
 
@@ -52,3 +52,11 @@ All notable changes to this project will be documented in this file.
 ### Changes
 
 - LiveSync now supports Presentation Templates.
+
+## [[226.0.0](https://help.hcl-software.com/digital-experience/9.5/CF226/whatsnew/cf20/newcf226/#dxclient-tls-certificate-validation)] - HCL DX 9.5 CF226
+
+### Changes
+
+- DXClient no longer ignores certificates that cannot be properly validated when using Transport Layer Security (TLS) connections
+- New documented limitations for LiveSync
+- Updated scripts to pass certificates to container.

@@ -42,7 +42,7 @@ if [ $retVal -ne 0 ]; then
   TTY_FLAG=""
 fi
 
-# Guards (checks for dependencies) 
+# Guards (checks for dependencies)
 check_cmd_in_path() {
   cmd=$1
   if ! $cmd -v &> /dev/null
@@ -85,11 +85,15 @@ fi
 containerFolder=/$DXCLIENT/$VOLUME_DIR
 volumeParams="-v \"$(pwd)/$VOLUME_DIR:/${containerFolder}\":Z"
 
+if [ $NODE_EXTRA_CA_CERTS ]; then
+  volumeParams="${volumeParams} -v \"${NODE_EXTRA_CA_CERTS}:/etc/ssl/certs/$(basename "${NODE_EXTRA_CA_CERTS}")\":Z"
+fi
+
 # Generate a separate volume for each folder or file in the parameter
 # Replace the folders in the parameter with the assigned container folder in volume parameter
 for i in "${!execCmd[@]}"; do
     # Check if -exportPath exist
-    if [[ "${execCmd[$i]}" == "-exportPath" || "${execCmd[$i]}" == "-themePath" ]]; then
+    if [[ "${execCmd[$i]}" == "-exportPath" || "${execCmd[$i]}" == "-themePath" || "${execCmd[$i]}" == "-wcmLibraryPath" ]]; then
       # then pass the value of exportPath, themePath to hostPath variable that is passed also as env
       hostPath=${execCmd[$i+1]}
     fi
