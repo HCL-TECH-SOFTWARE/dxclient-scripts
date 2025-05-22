@@ -39,6 +39,7 @@ Complete the following steps to install the DXClient tool to your local developm
 
     | Version | Image Tag               | Date       |
     |---------|-------------------------|------------|
+    | CF227   | v95_CF227_20250425-1919 | 2025-04-29 |
     | CF226   | v95_CF226_20250314-1505 | 2025-03-18 |
     | CF225   | v95_CF225_20250203-2238 | 2025-02-25 |
     | CF224   | v95_CF224_20241210-2249 | 2024-12-17 |
@@ -53,6 +54,11 @@ Complete the following steps to install the DXClient tool to your local developm
     <th>Version</th>
     <th>Image Tag</th>
     <th>Date</th>
+  </tr>
+  <tr>
+    <td>CF222</td>
+    <td>v95_CF222_20240814-1252</td>
+    <td>2024-08-14</td>
   </tr>
   <tr>
     <td>CF221</td>
@@ -265,11 +271,15 @@ Once installed, commands can be executed using the DXClient tool to perform CI /
 
   - LiveSync now supports Presentation Templates.
 
-  23. If connecting to an HCL DX 9.5 CF226 deployment, following changes are to be expected.
+  24. If connecting to an HCL DX 9.5 CF226 deployment, following changes are to be expected.
 
   - DXClient no longer ignores certificates that cannot be properly validated when using Transport Layer Security (TLS) connections
   - New documented limitations for LiveSync
   - Updated scripts to pass certificates to container.
+
+  25. If connecting to an HCL DX 9.5 CF227 deployment, following changes are to be expected.
+
+  - LiveSync now supports Style-Sheet Components.
 
 </details>
 

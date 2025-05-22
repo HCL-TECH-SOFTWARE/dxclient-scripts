@@ -4,7 +4,7 @@ SETLOCAL EnableDelayedExpansion
 ::********************************************************************
 :: Licensed Materials - Property of HCL                              *
 ::                                                                   *
-::  Copyright HCL Technologies Ltd. 2021, 2024. All Rights Reserved. *
+::  Copyright HCL Technologies Ltd. 2021, 2025. All Rights Reserved. *
 ::                                                                   *
 ::  Note to US Government Users Restricted Rights:                   *
 ::                                                                   *
@@ -71,6 +71,7 @@ if defined NODE_EXTRA_CA_CERTS (
 :: Setting search value "\" for validating filepath
 CALL SET searchVal=\
 SET hostPath=%CD%
+SET hostImportPath=""
 set exportPathExists=0
 set count=0
 
@@ -113,6 +114,18 @@ if /I "%~1"=="-exportPath" (
         set hostPath="%~2"
         shift
     )
+)else if /I "%~1"=="-importPath" (
+    set exportPathExists=1
+    if not "%~2"=="" (
+        set hostImportPath="%~2"
+        shift
+    )
+) else if /I "%~1"=="--importPath" (
+    set exportPathExists=1
+    if not "%~2"=="" (
+        set hostImportPath="%~2"
+        shift
+    )
 )
 if "%~1"=="" goto :done
 set /A count+=1
@@ -141,7 +154,7 @@ goto :loop
 	)
 )
 
-CALL SET environmentVars=!environmentVars! -e DXCLIENT_RUNTIME=!CONTAINER_RUNTIME! -e HOST_PATH=!hostPath!
+CALL SET environmentVars=!environmentVars! -e DXCLIENT_RUNTIME=!CONTAINER_RUNTIME! -e HOST_PATH=!hostPath! -e HOST_IMPORT_PATH=!hostImportPath!
 CALL !CONTAINER_RUNTIME! run !INTERACTIVE! !environmentVars! !volumeParams! --network="host" --name !DXCLIENT! --rm !IMAGE_NAME!:!IMAGE_TAG! ./bin/dxclient !newCmd!
 
 :: Cleanup the files created in local volume/mount point if the command is livesync

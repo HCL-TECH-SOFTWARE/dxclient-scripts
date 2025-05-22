@@ -60,3 +60,9 @@ All notable changes to this project will be documented in this file.
 - DXClient no longer ignores certificates that cannot be properly validated when using Transport Layer Security (TLS) connections
 - New documented limitations for LiveSync
 - Updated scripts to pass certificates to container.
+
+## [[226.0.0](https://help.hcl-software.com/digital-experience/9.5/CF227/whatsnew/cf20/newcf227/#dxclient-style-sheet-components-for-livesync)] - HCL DX 9.5 CF227
+
+### Changes
+
+  - LiveSync now supports Style-Sheet Components.

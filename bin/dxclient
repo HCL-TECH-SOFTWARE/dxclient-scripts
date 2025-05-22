@@ -3,7 +3,7 @@
 #********************************************************************
 #* Licenses Materials - Property of HCL                             *
 #*                                                                  *
-#* Copyright HCL Technologies Ltd. 2021, 2024. All Rights Reserved. *
+#* Copyright HCL Technologies Ltd. 2021, 2025. All Rights Reserved. *
 #*                                                                  *
 #* Note to US Government Users Restricted Rights:                   *
 #*                                                                  *
@@ -75,6 +75,7 @@ check_cmd_in_path $CONTAINER_RUNTIME
 execCmd=("$@")
 copyOfExecCmd=("$@")
 hostPath=$(pwd)
+hostImportPath=$(pwd)
 
 #creates volume directory if not present
 if [ ! -d "$(pwd)/$VOLUME_DIR" ]; then
@@ -97,6 +98,10 @@ for i in "${!execCmd[@]}"; do
       # then pass the value of exportPath, themePath to hostPath variable that is passed also as env
       hostPath=${execCmd[$i+1]}
     fi
+    if [[ "${execCmd[$i]}" == "--importPath" || "${execCmd[$i]}" == "-importPath" ]]; then
+      # then pass the value of importPath to hostPath variable that is passed also as env
+      hostImportPath=${execCmd[$i+1]}
+    fi
     if [[ -e ${execCmd[$i]} ]] && [[ "${execCmd[$i]}" == *"/"* ]]; then
          # Check if relative path and convert to absolute
         localPath=${execCmd[$i]}
@@ -116,7 +121,7 @@ for i in "${!execCmd[@]}"; do
     fi
 done
 
-eval $CONTAINER_RUNTIME run -e DXCLIENT_RUNTIME=\"$CONTAINER_RUNTIME\" -e HOST_PATH=\"$hostPath\" -e VOLUME_DIR=\"$VOLUME_DIR\" -u="$(echo $UID)" $TTY_FLAG -e TZ=$Timezone $volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
+eval $CONTAINER_RUNTIME run -e DXCLIENT_RUNTIME=\"$CONTAINER_RUNTIME\" -e HOST_PATH=\"$hostPath\" -e HOST_IMPORT_PATH=\"$hostImportPath\" -e VOLUME_DIR=\"$VOLUME_DIR\" -u="$(echo $UID)" $TTY_FLAG -e TZ=$Timezone $volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
 
 
 # Cleanup the files created in local volume/mount point if the command is livesync or export-assets
