@@ -39,12 +39,12 @@ Complete the following steps to install the DXClient tool to your local developm
 
     | Version | Image Tag               | Date       |
     |---------|-------------------------|------------|
+    | CF229   | TBA | TBA |
+    | CF228   | v95_CF228_20250606-1744 | 2025-06-10 |
     | CF227   | v95_CF227_20250425-1919 | 2025-04-29 |
     | CF226   | v95_CF226_20250314-1505 | 2025-03-18 |
     | CF225   | v95_CF225_20250203-2238 | 2025-02-25 |
     | CF224   | v95_CF224_20241210-2249 | 2024-12-17 |
-    | CF223   | v95_CF223_20240925-1911 | 2024-09-25 |
-    | CF222   | v95_CF222_20240814-1252 | 2024-08-14 |
 
 <details>
  <summary>Legacy Container Version and Tag Information</summary>
@@ -54,6 +54,11 @@ Complete the following steps to install the DXClient tool to your local developm
     <th>Version</th>
     <th>Image Tag</th>
     <th>Date</th>
+  </tr>
+  <tr>
+    <td>CF223</td>
+    <td>v95_CF223_20240925-1911</td>
+    <td>2024-09-25</td>
   </tr>
   <tr>
     <td>CF222</td>
