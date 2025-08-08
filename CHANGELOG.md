@@ -61,8 +61,20 @@ All notable changes to this project will be documented in this file.
 - New documented limitations for LiveSync
 - Updated scripts to pass certificates to container.
 
-## [[226.0.0](https://help.hcl-software.com/digital-experience/9.5/CF227/whatsnew/cf20/newcf227/#dxclient-style-sheet-components-for-livesync)] - HCL DX 9.5 CF227
+## [[227.0.0](https://help.hcl-software.com/digital-experience/9.5/CF227/whatsnew/cf20/newcf227/#dxclient-style-sheet-components-for-livesync)] - HCL DX 9.5 CF227
 
 ### Changes
 
   - LiveSync now supports Style-Sheet Components.
+
+## [[228.0.0](https://help.hcl-software.com/digital-experience/9.5/CF228/whatsnew/cf20/newcf228/)] - HCL DX 9.5 CF228
+
+### Changes
+
+  - XML Access max request file size can now be changed in the config.json at xmlAccessMaxFileSizeMB. Default set as 256MB, changing this might result to unexpected results.
+
+## [[229.0.0](https://help.hcl-software.com/digital-experience/9.5/CF229/whatsnew/cf20/newcf229/)] - HCL DX 9.5 CF229
+
+### Changes
+
+  - Updated Dependencies
