@@ -1,6 +1,7 @@
 {
     "name":"config.json",
     "desc":"The attributes in this file are used for configuration purpose and those must not be deleted.",
+    "disablePrompt": "false",
     "dxProtocol": "https",
     "dxConnectProtocol": "https",
     "hostname": "",
@@ -12,10 +13,12 @@
     "projectContext": "",
     "virtualPortalContext": "",
     "xmlConfigPath": "/wps/config",
+    "xmlAccessMaxFileSizeMB": 256,
     "damAPIPort": "443",
     "ringAPIPort": "443",
     "damAPIVersion": "v1",
     "ringAPIVersion": "v1",
+    "ltpaTokenRefreshTime": "5",
     "dxConnectUsername": "",
     "dxConnectPassword": "",
     "dxUsername": "",
@@ -46,5 +49,6 @@
     "wcmSiteArea": "",
     "wcmLibraryId": "",
     "wcmLibraryName": "",
+    "wcmLibraryPath": "",
     "wcmProjectName": ""
 }

@@ -39,7 +39,7 @@ Complete the following steps to install the DXClient tool to your local developm
 
     | Version | Image Tag               | Date       |
     |---------|-------------------------|------------|
-    | CF229   | TBA | TBA |
+    | CF229   | v95_CF229_20250813-1931 | 2025-08-15 |
     | CF228   | v95_CF228_20250606-1744 | 2025-06-10 |
     | CF227   | v95_CF227_20250425-1919 | 2025-04-29 |
     | CF226   | v95_CF226_20250314-1505 | 2025-03-18 |
