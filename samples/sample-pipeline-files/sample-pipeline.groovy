@@ -270,7 +270,7 @@ pipeline {
 
   post {
     cleanup {
-      /* Remove dxclient dockr image */
+      /* Remove dxclient docker image */
       dir("${WORKSPACE}") {
         script {
           if (fileExists("${WORKSPACE}/dxclient/")) {
