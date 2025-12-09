@@ -15,7 +15,7 @@ SETLOCAL EnableDelayedExpansion
 ::
 
 SET IMAGE_NAME=hclcr.io/dx-public/dxclient
-SET IMAGE_TAG=<IMAGE_TAG>
+set IMAGE_TAG=v95_CF231_20251024-1354
 SET DXCLIENT=dxclient
 SET DATA_DIR=store
 SET MOUNTED_VOL=
