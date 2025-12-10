@@ -15,7 +15,7 @@
 #
 
 IMAGE_NAME="hclcr.io/dx-public/dxclient"
-IMAGE_TAG="<IMAGE_TAG>"
+IMAGE_TAG="v95_CF231_20251024-1354"
 DXCLIENT="dxclient"
 DATA_DIR="store"
 MOUNT_LIST=
