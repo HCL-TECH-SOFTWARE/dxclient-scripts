@@ -37,14 +37,14 @@ Complete the following steps to install the DXClient tool to your local developm
 
 1. In this table, find the dxclient version you're interested in, and then copy the corresponding Image Tag.
 
-    | Version | Image Tag               | Date       |
-    |---------|-------------------------|------------|
-    | CF229   | v95_CF229_20250813-1931 | 2025-08-15 |
-    | CF228   | v95_CF228_20250606-1744 | 2025-06-10 |
-    | CF227   | v95_CF227_20250425-1919 | 2025-04-29 |
-    | CF226   | v95_CF226_20250314-1505 | 2025-03-18 |
-    | CF225   | v95_CF225_20250203-2238 | 2025-02-25 |
-    | CF224   | v95_CF224_20241210-2249 | 2024-12-17 |
+
+| Version | Image Tag | Date |
+| ------- | --------- | ---- |
+| CF231 | v95_CF231_20251024-1354 | 2025-10-27 |
+| CF230 | v95_CF230_20250922-1240 | 2025-09-23 |
+| CF229 | v95_CF229_20250813-1931 | 2025-08-15 |
+| CF228 | v95_CF228_20250606-1744 | 2025-06-09 |
+| CF227 | v95_CF227_20250425-1919 | 2025-04-28 |
 
 <details>
  <summary>Legacy Container Version and Tag Information</summary>
