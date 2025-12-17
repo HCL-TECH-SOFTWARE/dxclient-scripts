@@ -19,7 +19,7 @@ IMAGE_TAG="v95_CF231_20251024-1354"
 DXCLIENT="dxclient"
 DATA_DIR="store"
 MOUNT_LIST=
-regEx="[[:space:]]+" # matches a string with atleast one space character in it.
+regEx="[[:space:]]|\." # matches a string with a space character or dot in it.
 
 # provides users option to set Volume directory
 if [ ! "$VOLUME_DIR" ]
@@ -86,8 +86,17 @@ fi
 containerFolder=/$DXCLIENT/$VOLUME_DIR
 volumeParams="-v \"$(pwd)/$VOLUME_DIR:/${containerFolder}\":Z"
 
-if [ $NODE_EXTRA_CA_CERTS ]; then
-  volumeParams="${volumeParams} -v \"${NODE_EXTRA_CA_CERTS}:/etc/ssl/certs/$(basename "${NODE_EXTRA_CA_CERTS}")\":Z"
+# Initialize environment variables similar to batch script
+environmentVars="-e VOLUME_DIR=\"$VOLUME_DIR\" -e TZ=$Timezone"
+
+# Add NODE_TLS_REJECT_UNAUTHORIZED if set
+if [ -n "$NODE_TLS_REJECT_UNAUTHORIZED" ]; then
+  environmentVars="$environmentVars -e NODE_TLS_REJECT_UNAUTHORIZED=$NODE_TLS_REJECT_UNAUTHORIZED"
+fi
+
+# Add NODE_EXTRA_CA_CERTS if set
+if [ -n "$NODE_EXTRA_CA_CERTS" ]; then
+  volumeParams="$volumeParams -v \"$NODE_EXTRA_CA_CERTS:/etc/ssl/certs/$(basename "$NODE_EXTRA_CA_CERTS")\":Z"
 fi
 
 # Generate a separate volume for each folder or file in the parameter
@@ -95,33 +104,42 @@ fi
 for i in "${!execCmd[@]}"; do
     # Check if -exportPath exist
     if [[ "${execCmd[$i]}" == "-exportPath" || "${execCmd[$i]}" == "-themePath" || "${execCmd[$i]}" == "-wcmLibraryPath" ]]; then
-      # then pass the value of exportPath, themePath to hostPath variable that is passed also as env
-      hostPath=${execCmd[$i+1]}
+        # then pass the value of exportPath, themePath to hostPath variable that is passed also as env
+        hostPath=${execCmd[$i+1]}
     fi
     if [[ "${execCmd[$i]}" == "--importPath" || "${execCmd[$i]}" == "-importPath" ]]; then
-      # then pass the value of importPath to hostPath variable that is passed also as env
-      hostImportPath=${execCmd[$i+1]}
+        # then pass the value of importPath to hostPath variable that is passed also as env
+        hostImportPath=${execCmd[$i+1]}
     fi
-    if [[ -e ${execCmd[$i]} ]] && [[ "${execCmd[$i]}" == *"/"* ]]; then
-         # Check if relative path and convert to absolute
-        localPath=${execCmd[$i]}
-        localPath=$(getAbsolutePath "${localPath}")
 
-        # Add input to the mount list
-        MOUNT_LIST+=$localPath
+        # Check for livesync command to set CHOKIDAR_USEPOLLING
+        if [[ "${execCmd[$i]}" == "livesync" ]]; then
+            environmentVars="$environmentVars -e CHOKIDAR_USEPOLLING=true"
+        fi
+        if [[ -e ${execCmd[$i]} ]] && [[ "${execCmd[$i]}" == *"/"* ]]; then
+            # Check if relative path and convert to absolute
+            localPath=${execCmd[$i]}
+            localPath=$(getAbsolutePath "${localPath}")
 
-        # add this folder/filepath to volume parameter
-        volumeParams="${volumeParams} -v \"${localPath}\":\"${containerFolder}/$(basename "${localPath}")\":Z"
+            # Add input to the mount list
+            MOUNT_LIST+=$localPath
 
-        # Replace parameter with the folder known to the container
-        execCmd[$i]=\"${containerFolder}/$(basename "${localPath}")\"
-    # the following else condition checks if space is present and enclose the string within quotes
-    elif [[ ${execCmd[$i]} =~ $regEx ]]; then
-      execCmd[$i]=\"${execCmd[$i]}\"
-    fi
+            # add this folder/filepath to volume parameter
+            volumeParams="${volumeParams} -v \"${localPath}\":\"${containerFolder}/$(basename "${localPath}")\":Z"
+
+            # Replace parameter with the folder known to the container
+            execCmd[$i]=\"${containerFolder}/$(basename "${localPath}")\"
+        # the following else condition checks if space is present and enclose the string within quotes
+        elif [[ ${execCmd[$i]} =~ $regEx ]]; then
+            execCmd[$i]=\"${execCmd[$i]}\"
+        fi
 done
 
-eval $CONTAINER_RUNTIME run -e DXCLIENT_RUNTIME=\"$CONTAINER_RUNTIME\" -e HOST_PATH=\"$hostPath\" -e HOST_IMPORT_PATH=\"$hostImportPath\" -e VOLUME_DIR=\"$VOLUME_DIR\" -u="$(echo $UID)" $TTY_FLAG -e TZ=$Timezone $volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
+# Add host path and runtime environment variables
+environmentVars="$environmentVars -e HOST_PATH=\"$hostPath\" -e HOST_IMPORT_PATH=\"$hostImportPath\" -e DXCLIENT_RUNTIME=\"$CONTAINER_RUNTIME\""
+
+eval $CONTAINER_RUNTIME run -u="$(echo $UID)" $TTY_FLAG $environmentVars \
+$volumeParams --network="host" --platform linux/amd64 --name $DXCLIENT --rm ${IMAGE_NAME:?'Please set dxclient image name.'}:${IMAGE_TAG:?'Please set dxclient image tag.'} "./bin/dxclient" "${execCmd[@]}"
 
 
 # Cleanup the files created in local volume/mount point if the command is livesync or export-assets

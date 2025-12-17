@@ -78,3 +78,21 @@ All notable changes to this project will be documented in this file.
 ### Changes
 
   - Updated Dependencies
+
+## [[230.0.0](https://help.hcl-software.com/digital-experience/9.5/CF230/whatsnew/cf20/newcf230/)] - HCL DX 9.5 CF230
+
+### Changes
+
+  - New xmlAccessOutputFileName parameter added: You can now use the new xmlAccessOutputFileName parameter to specify the name of an output XML file. For more information, refer to XMLAccess
+
+## [[231.0.0](https://help.hcl-software.com/digital-experience/9.5/CF231/whatsnew/cf20/newcf231/)] - HCL DX 9.5 CF231
+
+### Changes
+
+  - No Changes
+
+## [[232.0.0](https://help.hcl-software.com/digital-experience/9.5/CF231/whatsnew/cf20/newcf231/)] - HCL DX 9.5 CF231
+
+### Changes
+
+  - Updated DXClient Container Wrapper Scripts.
