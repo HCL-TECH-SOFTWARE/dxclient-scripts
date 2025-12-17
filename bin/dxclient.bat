@@ -47,6 +47,18 @@ CALL :check_cmd_in_path !CONTAINER_RUNTIME!
 :: extract execution command arguments into a variable
 CALL SET execCmd=%*
 
+:: clean up \ in the end of inputs
+FOR %%i IN (!execCmd!) DO (
+    SET "currentItem=%%i"
+    IF "!currentItem:~-1!"=="\" (
+        CALL SET "cleanedItem=!currentItem:~0,-1!"
+    ) ELSE (
+        CALL SET "cleanedItem=!currentItem!"
+    )
+    CALL SET cleanCMD=!cleanCMD! !cleanedItem!
+)
+CALL SET execCmd=!cleanCMD!
+
 :: creates volume directory if not present
 if NOT EXIST "%cd%"/!VOLUME_DIR! (
     mkdir "!VOLUME_DIR!"
@@ -60,6 +72,11 @@ CALL SET "newCmd="
 :: curated set of environmental variables
 CALL SET environmentVars= -e TZ=!Timezone! -e VOLUME_DIR="!VOLUME_DIR!"
 
+:: Check if NODE_TLS_REJECT_UNAUTHORIZED is set to 0 and display security warning
+IF "!NODE_TLS_REJECT_UNAUTHORIZED!"=="0" (
+    CALL SET environmentVars=!environmentVars! -e NODE_TLS_REJECT_UNAUTHORIZED=0
+)
+
 :: Check if the environment variable NODE_EXTRA_CA_CERTS is set
 if defined NODE_EXTRA_CA_CERTS (
     for %%F in ("!NODE_EXTRA_CA_CERTS!") do (
@@ -69,7 +86,8 @@ if defined NODE_EXTRA_CA_CERTS (
 )
 
 :: Setting search value "\" for validating filepath
-CALL SET searchVal=\
+CALL SET "searchVals=\ . ./ /"
+
 SET hostPath=%CD%
 SET hostImportPath=""
 set exportPathExists=0
@@ -108,13 +126,19 @@ if /I "%~1"=="-exportPath" (
         set hostPath="%~2"
         shift
     )
+) else if /I "%~1"=="--wcmLibraryPath" (
+    set exportPathExists=1
+    if not "%~2"=="" (
+        set hostPath="%~2"
+        shift
+    )
 ) else if /I "%~1"=="--libraryPath" (
     set exportPathExists=1
     if not "%~2"=="" (
         set hostPath="%~2"
         shift
     )
-)else if /I "%~1"=="-importPath" (
+) else if /I "%~1"=="-importPath" (
     set exportPathExists=1
     if not "%~2"=="" (
         set hostImportPath="%~2"
@@ -127,11 +151,20 @@ if /I "%~1"=="-exportPath" (
         shift
     )
 )
+
 if "%~1"=="" goto :done
 set /A count+=1
 shift
 goto :loop
 :done
+
+:: Clean up the \ in the end of host path
+CALL SET searchSlash=\"
+IF "!hostPath:~-2!"=="!searchSlash!" (
+    CALL SET hostPath=!hostPath:~0,-2!"
+) ELSE (
+    CALL SET hostPath=!hostPath!
+)
 
 :: Generate a separate volume point for each folder or file in the parameter
 :: Replace the folders in the parameter with the assigned container folder in volume parameter
