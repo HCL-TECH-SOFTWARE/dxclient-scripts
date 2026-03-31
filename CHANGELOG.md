@@ -91,8 +91,20 @@ All notable changes to this project will be documented in this file.
 
   - No Changes
 
-## [[232.0.0](https://help.hcl-software.com/digital-experience/9.5/CF231/whatsnew/cf20/newcf231/)] - HCL DX 9.5 CF231
+## [[232.0.0](https://help.hcl-software.com/digital-experience/9.5/CF232/whatsnew/cf20/newcf232/)] - HCL DX 9.5 CF232
 
 ### Changes
 
-  - Updated DXClient Container Wrapper Scripts.
+  - No changes
+
+## [[233.0.0](https://help.hcl-software.com/digital-experience/9.5/CF233/whatsnew/cf20/newcf233/)] - HCL DX 9.5 CF233
+
+### Changes
+
+  - No changes
+
+## [[234.0.0](https://help.hcl-software.com/digital-experience/9.5/CF234/whatsnew/cf20/newcf234/)] - HCL DX 9.5 CF234
+
+### Changes
+
+  - No changes
